@@ -8,8 +8,9 @@ datafaces = {}
 for filepath in files:
     name = filepath.split(".")[0].split("/")[-1]
     image = face_recognition.load_image_file(filepath)
-    image_encoding = face_recognition.face_encodings(image)[0]
-    datafaces[name] = list(image_encoding)
+    image_encodings = face_recognition.face_encodings(image)
+    if image_encodings:
+        datafaces[name] = list(image_encodings[0])
 
 print("known_faces = ")
 print(datafaces)
