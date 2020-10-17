@@ -1,3 +1,6 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 """ Web application that identifies images from a pre processed database """
 import face_recognition
 import numpy as np
