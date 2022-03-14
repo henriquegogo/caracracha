@@ -9,7 +9,7 @@ from datafaces import known_faces
 
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
 
-APP = Flask(__name__)
+app = Flask(__name__)
 
 def allowed_file(filename):
     """ Verifies if file extension is compatible """
@@ -17,7 +17,7 @@ def allowed_file(filename):
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 
-@APP.route('/')
+@app.route('/')
 def home():
     """ Home interface """
     return '''<!doctype html>
@@ -34,7 +34,7 @@ def home():
 </body>
 '''
 
-@APP.route('/analyse', methods=['POST'])
+@app.route('/analyse', methods=['POST'])
 def upload():
     """ Route that receive file and start process """
     file = request.files['file']
@@ -61,4 +61,4 @@ def detect_faces_in_image(file_stream):
 '''
 
 if __name__ == "__main__":
-    APP.run(host='0.0.0.0', port=5001, debug=True)
+    app.run(host='0.0.0.0', port=5001, debug=True)
